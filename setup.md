@@ -55,11 +55,35 @@ Load 1M users in `user_account` table using `yb-sample-apps` data loader.
 kubectl run --image=nchandrappa/yb-sample-apps:1.0.12-SNAPSHOT yb-sample-apps-01 --limits="cpu=3200m,memory=4Gi" --requests="cpu=3000m,memory=4Gi" -- --workload SqlProductUserOrdersUpdate --nodes yb-tserver-0.yb-tservers.yb-dev-hasura-perf-cluster.svc.cluster.local:5433 --num_unique_keys 1000000 --num_threads_read 0 --num_threads_write 10 --batch_size 5 --data_load_prefix 0 --action_type loadprimary --default_postgres_database hasuratest --num_writes 1000000
 ```
 
-### Step 4: Deploy GraphQL Subscriptions perf tool
+### Step 5: Deploy GraphQL subscription perf tool
 
 This simulates 100k subscribers using subscriptions perf tool.
 
-a. Confi
+a. [Configure](./graphql-subscription-perf-tool/configmap.yaml) subscriptioin query to be benchmarked with subscribtions perf tool
+
+```
+kubectl apply -f configmap.yaml
+```
+
+b. Apply following [properites](./graphql-subscription-perf-tool/env.properties) to perf tool. This configures perf tool to connect to YugabyteDB cluster and Hasura GraphQL Engine.
+
+```
+kubectl create configmap graphql-perf-properties --from-env-file env.properties
+```
+
+c.  Deploy the GraphQL subscrption tool on k8s 
+
+```
+kubectl apply -f deployment.yaml
+```
+
+### Step 6: Start orders table dataload
+
+Start order table dataload for simulating the new order being placed in the system.
+
+```
+kubectl run --image=nchandrappa/yb-sample-apps:1.0.12-SNAPSHOT yb-sample-apps-01 --limits="cpu=4200m,memory=4Gi" --requests="cpu=3800m,memory=4Gi" -- --workload SqlProductUserOrdersUpdate --nodes yb-tserver-0.yb-tservers.yb-dev-hasura-perf-cluster.svc.cluster.local:5433 --num_unique_keys 100000 --num_threads_read 0 --num_threads_write 2 --batch_size 4 --data_load_prefix 0 --action_type loadforeign --default_postgres_database hasuratest --num_writes 1000000
+```
 
 
 
