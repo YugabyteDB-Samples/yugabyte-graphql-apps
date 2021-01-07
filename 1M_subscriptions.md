@@ -25,13 +25,16 @@ No. of Subscriptions | YugabyteDB Cluster | Hasura Pods | GraphQL Subscription T
 
 ## Metrics
 
-Live queries (subscriptions) latency.
+- Live queries (subscriptions) latency.
+
 ![latency](images/latency.png)
 
-YugabyteDB CPU utilization during subscription initilization
+- YugabyteDB CPU utilization during subscription initilization
+
 ![YB cpu utilization](images/yb_cpu_utilization.png)
 
-Hasura CPU utilization
+- Hasura CPU utilization
+
 ![Hasura cpu utilization](images/hasura_cpu_utilization.png)
 
 
