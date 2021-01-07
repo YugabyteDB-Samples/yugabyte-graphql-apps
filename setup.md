@@ -37,15 +37,22 @@ yugabyte=# create database hasuratest;
 ```
 c. Create the tables
 
+```
 ./bin/ysqlsh -h <yb-tserver-service> -f ./resources/user.sql
 ./bin/ysqlsh -h <yb-tserver-service> -f ./resources/user_orders.sql
 ./bin/ysqlsh -h <yb-tserver-service> -f ./resources/events.sql
+```
 
 ### Step 3: Deploy Hasura
 
-a. Lets first Deploy 1 Hasura pod, 4vcpu/ 8GB (20k subscriptions)
-b. Track tables and relationships from hasura console
-c. Update the stateful set to deploy 5 hasura instances
+- Lets first Deploy 1 Hasura pod, 4vcpu/ 8GB (20k subscriptions)
+
+```
+kubectl apply -f ./resources/deployment.yaml
+kubectl apply -f ./resources/svc.yaml
+```
+- Track tables and relationships from hasura console
+- Update the stateful set to deploy 5 hasura instances
 
 ### Step 4: Load Primary table, users table
 
@@ -79,7 +86,7 @@ kubectl apply -f deployment.yaml
 
 ### Step 6: Start orders table dataload
 
-Start order table dataload for simulating the new order being placed in the system.
+Start `orders` table dataload for simulating the new order being placed in the system.
 
 ```
 kubectl run --image=nchandrappa/yb-sample-apps:1.0.12-SNAPSHOT yb-sample-apps-01 --limits="cpu=4200m,memory=4Gi" --requests="cpu=3800m,memory=4Gi" -- --workload SqlProductUserOrdersUpdate --nodes yb-tserver-0.yb-tservers.yb-dev-hasura-perf-cluster.svc.cluster.local:5433 --num_unique_keys 100000 --num_threads_read 0 --num_threads_write 2 --batch_size 4 --data_load_prefix 0 --action_type loadforeign --default_postgres_database hasuratest --num_writes 1000000

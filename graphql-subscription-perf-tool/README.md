@@ -1,12 +1,5 @@
 # subscription-benchmark
 
-(Detailed documentation is WIP.)
+This is a load generator for GraphQL subscriptions based on the following [repo](https://github.com/hasura/graphql-subscriptions-benchmark) from Hasura. 
 
-This is a load generator for GraphQL subscriptions. 
-
-
-### Instructions:
-
-- npm install && npm run compile
-- Paramters in config.yaml
-- Run index.js in the `build/` folder
+This Benchmark tool has been extended to work with YugabyteDB and containerzied to run natively on Kubernetes.
