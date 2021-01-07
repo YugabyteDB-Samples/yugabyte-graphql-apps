@@ -3,7 +3,7 @@
 
 ## Step 1: Deploy YB cluster on Kubernetes
 
-Following the [docs](https://docs.yugabyte.com/latest/deploy/kubernetes/) for deploying YugabyteDB Cluster using helm charts on Kubernetes.
+Follow the [docs](https://docs.yugabyte.com/latest/deploy/kubernetes/) for deploying YugabyteDB Cluster using helm charts on Kubernetes.
 
 YugabyteDB cluster resource deatils: ` 3 pods * 16 vcpu, 32GB RAM, 2 * 100 GB SSD`.
 
