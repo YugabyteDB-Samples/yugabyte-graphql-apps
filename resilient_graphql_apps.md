@@ -17,7 +17,8 @@ The following results were observed as a result of killing a YugabyteDB pod.
 
 This section outlines the impact of losing a YugabyteDB pod (belonging to the YB-TServer service) while the GraphQL application is running, performing 100K subscriptions.
 
-- Read throughput and latency Before killing a pod
+- Read throughput and latency before killing a pod
+
 ![read_throughput](./images/read_throughput.png)
 ![latency](./images/ybops_latency.png)
 
@@ -31,7 +32,7 @@ The graph below shows the CPU and memory usage view of the pod that was killed. 
 
 - Read transactions latency gets normalized in 2 mins due to automatic upgrade of follower copies into leaders.
 
-** Note that there was no data loss or read throughput going to zero.**
+**Note that there was no data loss or read throughput going to zero.**
 
 ![read_transaction_latency_normalization](./images/read_transaction_latency_normalization.png)
 
