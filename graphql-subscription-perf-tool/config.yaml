@@ -1,0 +1,29 @@
+query: |
+  subscription ($id: bigint!) {
+    user_account (where: {userid: {_eq: $id}}) {
+        accountname
+        givenname
+        familyname
+        city
+        user_orders(order_by: {orderid: desc}) {
+            orderid
+            ordertotal
+            orderdetails
+            ordertime
+        }
+    }
+  }
+timePeriod: 2
+statsCountInsertInterval: 2
+variables:
+  id: '1'
+headers:
+  content-type: 'application/json'
+template:
+  range:
+    start: 1
+    end: 10
+  headers: 
+    content-type: 'application/json'
+  variables:
+    - id

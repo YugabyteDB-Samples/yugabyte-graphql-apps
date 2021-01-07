@@ -1,0 +1,57 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: graphql-perf-tool
+  labels:
+    app: graphql
+    version: v1
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: graphql
+      version: v1
+  template:
+    metadata:
+      labels:
+        app: graphql
+        version: v1
+    spec:
+      containers:
+      - name: graphql-perf
+        image: nchandrappa/graphql-subscription-tool:0.1v
+        imagePullPolicy: Always
+        env:
+          - name: CONFIG_FILE_PATH
+            valueFrom: 
+              configMapKeyRef:
+                name: graphql-perf-properties
+                key: perf.config.file.path
+          - name: PG_CONNECTION_STRING
+            valueFrom: 
+              configMapKeyRef:
+                name: graphql-perf-properties
+                key: perf.config.db.connection
+          - name: ENDPOINT
+            valueFrom: 
+              configMapKeyRef:
+                name: graphql-perf-properties
+                key: perf.config.graphql.endpoint
+        volumeMounts:
+        - name: config-volume
+          mountPath: /app/config.yaml
+          subPath: config.yaml
+        ports:
+        - containerPort: 8080
+        resources:
+          limits:
+            cpu: 4200m
+            memory: 8Gi
+          requests:
+            cpu: "2"
+            memory: 4Gi
+      volumes:
+        - name: config-volume
+          configMap:
+            name: graphql-perf-tool-config
+

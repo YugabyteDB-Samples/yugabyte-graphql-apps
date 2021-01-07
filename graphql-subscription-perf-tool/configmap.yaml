@@ -1,0 +1,36 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: graphql-perf-tool-config
+  namespace: default
+data:
+  config.yaml: |
+    query: |
+        subscription ($id: bigint!) {
+            user_account (where: {userid: {_eq: $id}}) {
+                accountname
+                givenname
+                familyname
+                city
+                user_orders(order_by: {orderid: desc}, limit: 2) {
+                    orderid
+                    ordertotal
+                    orderdetails
+                    ordertime
+                }
+            }
+        }
+    timePeriod: 1000
+    statsCountInsertInterval: 100
+    variables:
+        id: '1'
+    headers:
+        content-type: 'application/json'
+    template:
+        range:
+            start: 1
+            end: 25000
+        headers: 
+            content-type: 'application/json'
+        variables:
+            - id
