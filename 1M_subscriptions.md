@@ -29,11 +29,11 @@ No. of Subscriptions | YugabyteDB Cluster | Hasura Pods | GraphQL Subscription T
 
 ![latency](images/latency.png)
 
-- YugabyteDB CPU utilization during subscription initilization
+- YugabyteDB CPU utilization during GraphQL client subscription initilization.
 
 ![YB cpu utilization](images/yb_cpu_utilization.png)
 
-- Hasura CPU utilization
+- Hasura CPU utilization.
 
 ![Hasura cpu utilization](images/hasura_cpu_utilization.png)
 

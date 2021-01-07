@@ -1,4 +1,4 @@
-# Steps for Deploying the Benchmark Setup for 100K subscription run
+# Steps for Deploying the Benchmark Setup on Kubernetes
 
 
 ## Step 1: Deploy YB cluster on Kubernetes
@@ -13,7 +13,6 @@ Note the external-IP for yb-tserver-service which we are going to use to establi
 $ kubectl get services --namespace yb-demo
 ```
 ![service](images/k8s_service.png)
-
 
 ## Step 2: Prepare the database with table schema
 
@@ -91,8 +90,6 @@ Start `orders` table dataload for simulating the new order being placed in the s
 ```
 kubectl run --image=nchandrappa/yb-sample-apps:1.0.12-SNAPSHOT yb-sample-apps-01 --limits="cpu=4200m,memory=4Gi" --requests="cpu=3800m,memory=4Gi" -- --workload SqlProductUserOrdersUpdate --nodes yb-tserver-0.yb-tservers.yb-dev-hasura-perf-cluster.svc.cluster.local:5433 --num_unique_keys 100000 --num_threads_read 0 --num_threads_write 2 --batch_size 4 --data_load_prefix 0 --action_type loadforeign --default_postgres_database hasuratest --num_writes 1000000
 ```
-
-
 
 
 
