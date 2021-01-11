@@ -1,6 +1,6 @@
 # Scalable, available, multi-region GraphQL apps with Hasura and YugabyteDB
 
-For cloud native API developers, factors like GraphQL Query performance, handling infrastructure outages, and scalability of GraphQL applications are as important as ease of use GraphQL provides. This repo will provide a [benchmark tool](./graphql-subscription-perf-tool) and details for deploying the [benchmark setup](./setup.md) on a Kubernetes cluster. 
+For cloud native API developers, factors like GraphQL Query performance, handling infrastructure outages, and scalability of GraphQL applications are as important as ease of use GraphQL provides.  In this repo we have performed different scaling and relisiency tests for GraphQL applications using YugabyteDB and the observations are captured in the below mentioned docs - 
 
 - [Scaling GraphQL subscriptions to 1 Million subscribers linearly](./1M_subscriptions.md)
 - [High availability of GraphQL subscriptions under infrastructure failures](./resilient_graphql_apps.md)
@@ -8,7 +8,8 @@ For cloud native API developers, factors like GraphQL Query performance, handlin
 
 ## The Setup
 
-The entire [setup](./setup.md) runs inside Kubernetes. Below are the main components:
+This repo will provide a [benchmark tool](./graphql-subscription-perf-tool) and details for deploying the [benchmark setup](./setup.md) on a Kubernetes cluster. The entire [setup](./setup.md) runs inside Kubernetes. Below are the main components:
+
 - A YugabyteDB cluster running natively inside k8s
 - A Hasura k8s service
 - The sample application which consists of:
