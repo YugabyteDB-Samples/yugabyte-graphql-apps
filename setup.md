@@ -44,14 +44,14 @@ c. Create the tables
 
 ### Step 3: Deploy Hasura
 
-- Lets first Deploy 1 Hasura pod, 4vcpu/ 8GB (20k subscriptions)
+- Lets first Deploy 1 Hasura pod, 4vcpu/ 8GB (20k subscriptions per Hasura instance)
 
 ```
 kubectl apply -f ./resources/deployment.yaml
 kubectl apply -f ./resources/svc.yaml
 ```
 - Track tables and relationships from hasura console
-- Update the stateful set to deploy 5 hasura instances
+- Update the stateful set to deploy 5 hasura instances (100K subscriptions in total)
 
 ### Step 4: Load Primary table, users table
 
