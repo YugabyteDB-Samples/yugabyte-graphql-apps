@@ -19,7 +19,7 @@ const scheme = (proto) => {
 
 const wssurl = `${scheme('wss')}://${HASURA_GRAPHQL_ENGINE_HOSTNAME}/v1/graphql`;
 const httpsurl = `${scheme('https')}://${HASURA_GRAPHQL_ENGINE_HOSTNAME}/v1/graphql`;
-const hasura_secret = 'pCf2Hpo0FojxMoQF1wuwaX16dcYb7mo3HodnUBSlvLULqb93fkdv4GDVNjr5HcHD';
+const hasura_secret = '';
 
 // ** http connection for localhost **
 // const wsurl = `${scheme('ws')}://${HASURA_GRAPHQL_ENGINE_HOSTNAME}/v1/graphql`;
