@@ -1,3 +1,5 @@
+CREATE EXTENSION IF NOT EXISTS pgcrypto;
+
 CREATE FUNCTION public.update_last_seen_timestamp_func() RETURNS trigger
     LANGUAGE plpgsql
     AS $$
