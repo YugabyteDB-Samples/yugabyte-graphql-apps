@@ -1,3 +1,6 @@
+
+CREATE EXTENSION IF NOT EXISTS pgcrypto;
+
 CREATE FUNCTION public.update_last_seen_timestamp_func() RETURNS trigger
     LANGUAGE plpgsql
     AS $$
@@ -48,14 +51,7 @@ CREATE VIEW public.poll_results AS
              LEFT JOIN public.option ON ((option.id = vote.option_id)))) o
      LEFT JOIN public.poll ON ((poll.id = o.poll_id)))
   GROUP BY poll.question, o.option_id, poll.id;
--- ALTER TABLE ONLY public.option
---    ADD CONSTRAINT option_pkey PRIMARY KEY (id);
--- ALTER TABLE ONLY public.poll
---    ADD CONSTRAINT poll_pkey PRIMARY KEY (id);
--- ALTER TABLE ONLY public."user"
---    ADD CONSTRAINT user_pkey PRIMARY KEY (id);
--- ALTER TABLE ONLY public.vote
---    ADD CONSTRAINT vote_pkey PRIMARY KEY (id);
+
 CREATE TRIGGER update_last_seen_timestamp_trigger BEFORE INSERT OR UPDATE ON public."user" FOR EACH ROW EXECUTE FUNCTION public.update_last_seen_timestamp_func();
 ALTER TABLE ONLY public.option
     ADD CONSTRAINT option_poll_id_fkey FOREIGN KEY (poll_id) REFERENCES public.poll(id);
