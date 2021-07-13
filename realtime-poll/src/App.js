@@ -46,11 +46,15 @@ class App extends Component {
                 <img className="hasura-logo" alt="hasura logo" src="https://graphql-engine-cdn.hasura.io/img/powered_by_hasura_black_200px.png" />
               </a>
               &nbsp; | &nbsp;
-              <a href="https://realtime-poll.hasura.app/console" target="_blank">
+              <a href="https://www.yugabyte.com" target="_blank" rel="noopener noreferrer">
+                <img className="yugabyte-logo" alt="yugabyte logo" src="https://cloud.yugabyte.com/static/media/yugabyte-cloud-logo-horizontal_full_dark.bc9d0137.png" />
+              </a>
+              &nbsp; | &nbsp;
+              <a href="https://hasura-yb-demo.hasura.app/console" target="_blank">
                 Backend
               </a>
               &nbsp; | &nbsp;
-              <a href="https://github.com/hasura/graphql-engine/tree/master/community/sample-apps/realtime-poll" target="_blank" rel="noopener noreferrer">
+              <a href="https://github.com/yugabyte/yugabyte-graphql-apps/tree/master/realtime-poll" target="_blank" rel="noopener noreferrer">
                 Source
               </a>
               <div className="footer-small-text"><span>(The database resets every 24 hours)</span></div>

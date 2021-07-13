@@ -22,7 +22,7 @@ hosted on GitHub pages and the Postgres+GraphQL Engine is running on Postgres.
 - Deploy GraphQL Engine on Hasura Cloud and setup PostgreSQL via Heroku:
   
   [![Deploy to Hasura Cloud](https://graphql-engine-cdn.hasura.io/img/deploy_to_hasura.png)](https://cloud.hasura.io/)
-- Get the Hasura app URL (say `realtime-poll.hasura.app`)
+- Get the Hasura app URL (say `hasura-yb-demo.hasura.app`)
 - Clone this repo:
   ```bash
   git clone https://github.com/hasura/graphql-engine
@@ -31,17 +31,19 @@ hosted on GitHub pages and the Postgres+GraphQL Engine is running on Postgres.
 - [Install Hasura CLI](https://hasura.io/docs/latest/graphql/core/hasura-cli/install-hasura-cli.html)
 - Goto `hasura/` and edit `config.yaml`:
   ```yaml
-  endpoint: https://realtime-poll.hasura.app
+  endpoint: https://hasura-yb-demo.hasura.app
   ```
 - Apply the migrations:
   ```bash
-  hasura migrate apply
+  hasura migrate apply --database-name yugabyte-cloud-instance
   ```
-- Edit `HASURA_GRAPHQL_ENGINE_HOSTNAME` in `src/apollo.js` and set it to the
+- Edit `HASURA_GRAPHQL_ENGINE_HOSTNAME` and `hasura_secret` in `src/apollo.js` and set it to the
   Hasura app URL:
   ```js
-  export const HASURA_GRAPHQL_ENGINE_HOSTNAME = 'realtime-poll.hasura.app';
+  export const HASURA_GRAPHQL_ENGINE_HOSTNAME = 'hasura-yb-demo.hasura.app';
+  const hasura_secret = '';
   ```
+  Note: Obtain `hasura_secret` from Hasura Cloud Console.
 - Run the app (go the root of repo):
   ```bash
   npm install
