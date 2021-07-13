@@ -25,8 +25,8 @@ hosted on GitHub pages and the Postgres+GraphQL Engine is running on Postgres.
 - Get the Hasura app URL (say `hasura-yb-demo.hasura.app`)
 - Clone this repo:
   ```bash
-  git clone https://github.com/hasura/graphql-engine
-  cd graphql-engine/community/sample-apps/realtime-poll
+  git clone https://github.com/yugabyte/yugabyte-graphql-apps
+  cd realtime-poll
   ```
 - [Install Hasura CLI](https://hasura.io/docs/latest/graphql/core/hasura-cli/install-hasura-cli.html)
 - Goto `hasura/` and edit `config.yaml`:
