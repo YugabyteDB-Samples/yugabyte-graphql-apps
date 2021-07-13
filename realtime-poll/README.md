@@ -6,16 +6,12 @@ Engine](https://github.com/hasura/graphql-engine).
 [![Edit realtime-poll](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/github/hasura/graphql-engine/tree/master/community/sample-apps/realtime-poll?fontsize=14)
 
 The Realtime Poll application is built using React and is powered by Hasura
-GraphQL Engine over Postgres. It has an interface for users to cast vote on a
+GraphQL Engine over YugabyteDB. It has an interface for users to cast vote on a
 poll and the results are updated in the on-screen bar chart, in real-time.
 
 The application makes use of Hasura GraphQL Engine's real-time capabilities
 using `subscription`. There is no backend code involved. The application is
-hosted on GitHub pages and the Postgres+GraphQL Engine is running on Postgres.
-
-- Checkout the [live app](https://realtime-poll.demo.hasura.app/).
-- Explore the backend using [Hasura
-  Console](https://realtime-poll.hasura.app/console).
+hosted on GitHub pages and the Yugabyte+GraphQL Engine is running on YugabyteDB.
   
 # Running the app yourself
 
