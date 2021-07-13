@@ -19,7 +19,7 @@ hosted on GitHub pages and the Postgres+GraphQL Engine is running on Postgres.
   
 # Running the app yourself
 
-- Deploy GraphQL Engine on Hasura Cloud and setup PostgreSQL via Heroku:
+- Deploy GraphQL Engine on Hasura Cloud and setup Yugabyte Cloud Instance:
   
   [![Deploy to Hasura Cloud](https://graphql-engine-cdn.hasura.io/img/deploy_to_hasura.png)](https://cloud.hasura.io/)
 - Get the Hasura app URL (say `hasura-yb-demo.hasura.app`)
